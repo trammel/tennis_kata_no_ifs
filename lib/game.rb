@@ -19,19 +19,20 @@ class Game
 
   private
 
-  def simple_increment_score new, score_modifier
-    {
-        0  => [new, 0,  score_modifier.call([new, 0 ]), ''],
-        15 => [new, 15, score_modifier.call([new, 15]), ''],
-        30 => [new, 30, score_modifier.call([new, 30]), ''],
-        40 => [new, 40, score_modifier.call([new, 40]), ''],
-    }
-  end
-
   def player_scores player_name, opponent_name, player_score, opponent_score, score_modifier
     game = {
-            0  => simple_increment_score(15, score_modifier),
-            15 => simple_increment_score(30, score_modifier),
+            0 => {
+                0  => [15, 0,  score_modifier.call([15, 0 ]), ''],
+                15 => [15, 15, score_modifier.call([15, 15]), ''],
+                30 => [15, 30, score_modifier.call([15, 30]), ''],
+                40 => [15, 40, score_modifier.call([15, 40]), ''],
+            },
+            15 => {
+                0  => [30, 0,  score_modifier.call([30, 0 ]), ''],
+                15 => [30, 15, score_modifier.call([30, 15]), ''],
+                30 => [30, 30, score_modifier.call([30, 30]), ''],
+                40 => [30, 40, score_modifier.call([30, 40]), ''],
+            },
             30 => {
                 0  => [40, 0,  score_modifier.call([40,  0]), ''],
                 15 => [40, 15, score_modifier.call([40, 15]), ''],

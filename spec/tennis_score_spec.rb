@@ -76,4 +76,21 @@ describe Game do
     @game.winner.should == 'Player 2'
   end
 
+  it "player 1 should win if player 1 scores 3 times, then player 2 scores 3 times, then player 1 once, then player 2 twice, then player 1 scores three times" do
+    3.times { @game.player1_score }
+    @game.score.should == [40, 0]
+    3.times { @game.player2_score }
+    @game.score.should == 'Deuce'
+    1.times { @game.player1_score }
+    @game.score.should == 'Advantage Player 1'
+    2.times { @game.player2_score }
+    @game.score.should == 'Advantage Player 2'
+    1.times { @game.player1_score }
+    @game.score.should == 'Deuce'
+    2.times { @game.player1_score }
+    @game.winner.should == 'Player 1'
+  end
+
+
+
 end

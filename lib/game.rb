@@ -1,5 +1,7 @@
 class Game
 
+  attr_reader :winner, :score
+
   def initialize
     @winner = ''
     @score = [0, 0]
@@ -7,8 +9,17 @@ class Game
     @player2_score = 0
   end
 
+  def player1_score
+    @player1_score, @player2_score, @score, @winner = player_scores 'Player 1', 'Player 2', @player1_score, @player2_score, lambda { |s| s }
+  end
 
-  def result player_name, opponent_name, player_score, opponent_score, score_modifier
+  def player2_score
+    @player2_score, @player1_score, @score, @winner = player_scores 'Player 2', 'Player 1', @player2_score, @player1_score, lambda { |s| s.reverse}
+  end
+
+  private
+
+  def player_scores player_name, opponent_name, player_score, opponent_score, score_modifier
     game = {
             0 => {
                 0  => [15, 0,  score_modifier.call([15, 0 ]), ''],
@@ -43,24 +54,7 @@ class Game
                 "Advantage #{opponent_name}" => ['Deuce', 'Deuce', 'Deuce'],
             },
     }
-    raise "couldnt find #{player_score}" unless game.has_key? player_score
-    puts [player_name, opponent_name, player_score, opponent_score, game[player_score][opponent_score]].inspect
     return game[player_score][opponent_score]
   end
 
-  def player1_score
-    @player1_score, @player2_score, @score, @winner = result('Player 1', 'Player 2', @player1_score, @player2_score, lambda { |s| s })
-  end
-
-  def player2_score
-    @player2_score, @player1_score, @score, @winner = result('Player 2', 'Player 1', @player2_score, @player1_score, lambda { |s| s.reverse})
-  end
-
-  def score
-    @score
-  end
-
-  def winner
-    @winner
-  end
 end

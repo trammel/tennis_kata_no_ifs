@@ -51,8 +51,29 @@ describe Game do
   end
 
   it "should be deuce at 40-40" do
-    4.times { @game.player1_score }
-    4.times { @game.player2_score }
+    3.times { @game.player1_score }
+    3.times { @game.player2_score }
     @game.score.should == 'Deuce'
   end
+
+  it "should be deuce if player 1 scores 3 times, then player 2 scores 3 times, then player 1 once, then player 2 once" do
+    3.times { @game.player1_score }
+    3.times { @game.player2_score }
+    1.times { @game.player1_score }
+    1.times { @game.player2_score }
+    @game.score.should == 'Deuce'
+  end
+
+  it "player 2 should have advantage if player 1 scores 3 times, then player 2 scores 4 times" do
+    3.times { @game.player1_score }
+    4.times { @game.player2_score }
+    @game.score.should == 'Advantage Player 2'
+  end
+
+  it "player 2 should win if player 1 scores 3 times, then player 2 scores 5 times" do
+    3.times { @game.player1_score }
+    5.times { @game.player2_score }
+    @game.winner.should == 'Player 2'
+  end
+
 end

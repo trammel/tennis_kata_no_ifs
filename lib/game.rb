@@ -29,9 +29,9 @@ class Game
                 40 => ['Deuce', 'Deuce', 'Deuce', ''],
            },
             40 => {
-                0  => [winner, 0 ,  "winner #{player_name}", player_name],
-                15 => [winner, 15,  "winner #{player_name}", player_name],
-                30 => [winner, 30,  "winner #{player_name}", player_name],
+                0  => ['winner', 0 ,  "winner #{player_name}", player_name],
+                15 => ['winner', 15,  "winner #{player_name}", player_name],
+                30 => ['winner', 30,  "winner #{player_name}", player_name],
             },
             'Deuce' => {
                 'Deuce' => ["advantage #{player_name}", "advantage #{player_name}", "advantage #{player_name}"]
@@ -44,6 +44,7 @@ class Game
             },
     }
     raise "couldnt find #{player_score}" unless game.has_key? player_score
+    puts [player_name, opponent_name, player_score, opponent_score, game[player_score][opponent_score]].inspect
     return game[player_score][opponent_score]
   end
 

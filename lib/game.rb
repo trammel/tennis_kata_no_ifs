@@ -37,7 +37,7 @@ class Game
                 'Deuce' => ["Advantage #{player_name}", "Advantage #{player_name}", "Advantage #{player_name}"]
             },
             "Advantage #{player_name}" => {
-                "Advantage #{player_name}" => ["winner #{player_name}", 'Deuce', player_name]
+                "Advantage #{player_name}" => ["winner #{player_name}", 'Deuce', "winner #{player_name}", player_name]
             },
             "Advantage #{opponent_name}" => {
                 "Advantage #{opponent_name}" => ['Deuce', 'Deuce', 'Deuce'],

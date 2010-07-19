@@ -51,10 +51,10 @@ class Game
                 "Advantage #{player_name}" => ["winner #{player_name}", 'Deuce', "winner #{player_name}", player_name]
             },
             "Advantage #{opponent_name}" => {
-                "Advantage #{opponent_name}" => ['Deuce', 'Deuce', 'Deuce'],
+                "Advantage #{opponent_name}" => ['Deuce', 'Deuce', 'Deuce', ''],
             },
     }
-    return game[player_score][opponent_score]
+    game[player_score][opponent_score]
   end
 
 end
